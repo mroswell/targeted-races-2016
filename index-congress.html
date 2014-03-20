@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="js/d3.v3.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="css/style.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="container">
+
+    <div class="row">
+        <h1>Congressional Scorecard Map <br><small>Food Policy Action </small></h1>
+    </div>
+    <div class="row">
+        <div id="infobar"></div>
+    </div>
+    <div class="row">
+        <div id="main" class="col-md-9">
+            <div id="map"></div>
+        </div>
+        <div id="sidebar" class="col-md-3"></div>
+    </div>
+</div><!-- /container -->
+
+
+
+
+<script id="senate-template-infobox" type="text/x-handlebars-template">
+    <div class="infobox" id="infobox" style="padding-top:12px;">
+        <div class="body">
+            <strong>{{{member}}}</strong> ({{{district}}})<br /> Score: <strong>{{{score}}}</strong>
+        </div>
+    </div>
+</script>
+
+<!-- Don't need jQuery for Tabletop, but using it for this example -->
+<script type="text/javascript" src="js/handlebars.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="js/tabletop.js"></script>
+<script type="text/javascript">
+    var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?key=0Ao3Ts9D8bHHpdGtPUldxNmw5enp1dkR2VlJRSXpSU3c&output=html';
+    var geo;
+    var houseDistricts = {};
+    var app = {};
+
+
+    $(document).ready( function() {
+        Tabletop.init( { key: public_spreadsheet_url,
+            callback: showInfo,
+            parseNumbers: true } );
+    });
+
+    function clearInfobox() {
+        infobar.html(' ');
+        infobar.attr("class", "col-md-3")
+    }
+
+    function showInfo(data, tabletop) {
+
+        var sourcebox = $("#senate-template-infobox").html();
+        app.infoboxTemplate = Handlebars.compile(sourcebox);
+        $.each( tabletop.sheets("scores").all(), function(i, member) {
+            houseDistricts[member.distmatch] = member;
+        });
+        loadGeo();
+    }
+
+    //Width and height
+    var w = 880;
+    var h = 600;
+
+    //Define map projection
+    var projection = d3.geo.albersUsa()
+            .translate([w/2, h/2])
+            .scale([1200]);
+
+    //Define path generator
+    var path = d3.geo.path()
+            .projection(projection);
+
+
+    var colorScale = d3.scale.threshold()
+            .domain([0.5, 20, 40, 60, 80, 99, 101])
+            .range(d3.range(7).map(function(d) {
+                // console.log("q", d);
+                return "q" + d + "-7";
+            }));
+
+    // Create SVG element
+    var mapdiv = d3.select("#map");
+
+    var svg = mapdiv.append("svg")
+            .attr("width", w)
+            .attr("height", h);
+
+    var sidebar = d3.select('#sidebar');
+    var infobar = d3.select('#infobar');
+
+    function loadGeo() {
+        //Load in GeoJSON data
+        d3.json("maps/congress113.json", function(json) {
+
+            json.features.forEach(function(feature) {
+                if (houseDistricts[(feature.properties.DISTRICT)]) {
+                    feature.properties = houseDistricts[(feature.properties.DISTRICT)]
+                } else {
+                    console.log("No match", feature.properties.DISTRICT);
+                }
+            });
+
+            geo = json;
+            render()
+        })
+    }
+
+    function render() {
+        //Bind data and create one path per GeoJSON feature
+        svg.selectAll("path")
+                .data(geo.features)
+                .enter()
+                .append("path")
+                .attr("d", path)
+                .attr("stroke", "white")
+                .attr("stroke-width", 1)
+                .attr("class", function(d) {
+                    return colorScale(d.properties.score)
+                })
+                .on('mouseover', function(d) {
+                        var dd = d.properties;
+                        infobar.attr("class", "infobox col-md-3");
+                        var html = app.infoboxTemplate(dd);
+                        $("#infobar").append(html);
+                })
+
+                .on('mouseout', function(d) {
+                        clearInfobox();
+                });
+
+    }
+
+    $(document).on("click","button",function(event) {
+        event.preventDefault();
+        clearInfobox();
+    });
+
+</script>
+</body>
+</html>

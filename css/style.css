@@ -1,0 +1,70 @@
+body {
+    background: #fefefe; /*#FCFCBD;*/
+    font-family: "arial", "helvetica", sans-serif;
+}
+
+.entry {
+    float: left;
+    width: 300px;
+    border: solid black 1px;
+    height: 50px;
+    padding: 25px;
+    margin: 25px;
+    background: white;
+    line-height: 1.1;
+}
+
+
+#infobox {
+    float: left;
+    width: 290px;
+    border: solid black 1px;
+    height: 50px;
+    padding: 25px;
+    margin: 25px;
+    background: white;
+    line-height: 1.1;
+}
+h2 {
+    font-size: 2em;
+    color: black;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 20px red;
+}
+
+.custom-icon {
+    margin-right:4px;
+    border-radius:5px;
+    padding:3px 7px;
+    min-width:20px;
+    display:inline-block;
+    color:#fff;
+    text-decoration: none;
+}
+
+.icon-twitter {background-color: #00ACED;}
+.icon-facebook {background-color: #3B5998;}
+.icon-envelope {background-color:#c0c0c0;}
+.icon-2x {font-size: 1.7em;}
+
+.q0-6{fill:rgb(255,0,0)}
+.q1-6{fill:#FC8400;}
+.q2-6{fill:#FDC300;}
+.q3-6{fill:#FEF200;}
+.q4-6{fill:#82e0c3;}
+.q5-6{fill:#4EAB07;}
+
+.q0-7{fill:#D32;}
+.q1-7{fill:#E98736;}
+.q2-7{fill:#F1C76E;}
+.q3-7{fill:#FFB;}
+.q4-7{fill:#C0DC8F;}
+.q5-7{fill:#7ABB6D;}
+.q6-7{fill:#195;}
+.q7-7{fill: rgba(22, 48, 3, 0.93);}
+
+
+button.close {margin-top: -4px;margin-right: -8px; }
+
+#infobar {height:50px;}
+
