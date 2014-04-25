@@ -18,10 +18,11 @@ body {
 #infobox {
     float: left;
     width: 290px;
-    border: solid black 1px;
+    border: solid grey 1px;
     height: 50px;
     padding: 25px;
-    margin: 25px;
+    /*margin: 25px;*/
+    margin: 0 0 25px 30px;
     background: white;
     line-height: 1.1;
 }
@@ -67,4 +68,41 @@ h2 {
 button.close {margin-top: -4px;margin-right: -8px; }
 
 #infobar {height:50px;}
+
+
+.my-legend .legend-title {
+    text-align: left;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 90%;
+}
+.my-legend .legend-scale ul {
+    margin: 0;
+    padding: 0;
+    float: left;
+    list-style: none;
+}
+.my-legend .legend-scale ul li {
+    display: block;
+    float: left;
+    width: 60px;
+    margin-bottom: 6px;
+    text-align: center;
+    font-size: 80%;
+    list-style: none;
+}
+.my-legend ul.legend-labels li span {
+    display: block;
+    float: left;
+    height: 15px;
+    width: 60px;
+}
+.my-legend .legend-source {
+    font-size: 70%;
+    color: #999;
+    clear: both;
+}
+.my-legend a {
+    color: #777;
+}
 
