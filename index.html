@@ -29,7 +29,7 @@
 <script id="senate-template-infobox" type="text/x-handlebars-template">
     <div class="infobox" id="infobox" style="padding-top:12px;">
         <div class="body">
-            <strong>{{{state}}}</strong> <br /> <strong>{{{category}}}</strong>
+            <strong>{{{state}}}</strong> <br />{{{category}}}<br /> {{{hotraces}}}
         </div>
     </div>
 </script>
@@ -90,7 +90,7 @@
 //                return "q" + d + "-7";
 //            }));
     var colorScale = d3.scale.ordinal()
-            .domain(["Republican", "Likely Republican", "Leans Republican", "Toss-up", "Leans Democratic","Democratic", "."])
+            .domain(["Republican", "Likely Republican", "Leans Republican", "Toss-up", "Leans Democratic","Democratic", "Not a Targeted Race"])
             .range(d3.range(7).map(function(d) {
                 // console.log("q", d);
           console.log(d.state, "q"+ d + "-7");
