@@ -79,8 +79,13 @@ h2 {
 .q0-7{fill: #A13528;}
 .q1-7{fill: #C26D6A;}
 .q2-7{fill: #CF9A92;}
-.q3-7{fill: #EED4D5;}
-.q3-7{fill: #DED9DD;}
+/*.q3-7{fill: #EED4D5;}*/
+.qformer3-7{fill: #DED9DD;}
+/*.q3-7 {fill: #A2679C;}*/
+/*.q3-7 {fill: #C197C0;}*/
+/*.q3-7 {fill: #CAADCA;}*/
+/*.q3-7 {fill: #CAADCA;}*/
+.q3-7 {fill: #D0B9CF;}
 .q4-7{fill: #91A6C5;}
 .q5-7{fill: #607DA5;}
 .qnot5-7{fill: #144E7C;}
