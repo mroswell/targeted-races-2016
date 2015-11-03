@@ -1,15 +1,12 @@
-Scorecard Map
-This is an interactive map of the Food Policy Action Scorecard
-<http://www.foodpolicyaction.org/FPA2013Scorecard.pdf>
+Targeted Races 2016
 
 Completed:
-  * Extracted data from PDF into spreadsheet
-  * House map with color scale
-  * Tooltips
+  * State map with color scale, based on spreadsheet data
+  * Mouseover Tooltips
+  * Handlebars helper to enable newlines in spreadsheet to be honored
+  * click event
 
 To do:
-  * Senate map
-  * Zoom
-  * Pan
+  * Resolve functionality on the WordPress side
 
 
