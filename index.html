@@ -133,11 +133,14 @@
         svg.selectAll("path")
                 .data(geo.features)
                 .enter()
-                .append("path")
-                .attr("d", path)
-                .attr("stroke", "white")
-                .attr("stroke-width", 1)
-                .attr("class", function(d) {
+
+            .append("a")
+            .attr("xlink:href", function(d) {return "http://melmanalex.wpengine.com/#" + d.properties.state})
+            .append("path")
+            .attr("d", path)
+            .attr("stroke", "white")
+            .attr("stroke-width", 1)
+            .attr("class", function(d) {
                     console.log(d);
               console.log(d.properties.state, d.properties.category, colorScale(d.properties.category));
 
