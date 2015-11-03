@@ -29,7 +29,11 @@
 <script id="senate-template-infobox" type="text/x-handlebars-template">
     <div class="infobox" id="infobox" style="padding-top:12px;">
         <div class="body">
-            <strong>{{{state}}}</strong> <br />{{{category}}}<br /> {{{breaklines hotraces}}}
+          <div class="row">
+            <div class="col-md-4">
+            <strong>{{{state}}}</strong> <br />{{{category}}}</div>
+            <div class="col-md-8">{{{breaklines hotraces}}}</div>
+          </div>
         </div>
     </div>
 </script>
