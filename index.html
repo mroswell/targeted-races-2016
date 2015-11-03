@@ -10,7 +10,7 @@
 <div class="container">
 
     <div class="row">
-        <h1>Targeted States <br><small>2016</small></h1>
+        <h1>Targeted States <small>2016</small></h1>
     </div>
     <div class="row">
         <div id="infobar"></div>
@@ -29,7 +29,7 @@
 <script id="senate-template-infobox" type="text/x-handlebars-template">
     <div class="infobox" id="infobox" style="padding-top:12px;">
         <div class="body">
-            <strong>{{{state}}}</strong> <br />{{{category}}}<br /> {{{hotraces}}}
+            <strong>{{{state}}}</strong> <br />{{{category}}}<br /> {{{breaklines hotraces}}}
         </div>
     </div>
 </script>
@@ -46,6 +46,11 @@
     var senateDistricts = {};
     var app = {};
 
+    Handlebars.registerHelper('breaklines', function(text) {
+      text = Handlebars.Utils.escapeExpression(text);
+      text = text.replace(/(\r\n|\n|\r)/gm, '<br>');
+      return new Handlebars.SafeString(text);
+    });
 
     $(document).ready( function() {
         Tabletop.init( { key: public_spreadsheet_url,
