@@ -14,7 +14,6 @@ body {
     line-height: 1.1;
 }
 
-
 #infobox {
     /*float: left;*/
     width: 570px;
@@ -28,6 +27,7 @@ body {
     background: white;
     line-height: 1.1;
 }
+
 h2 {
     font-size: 2em;
     color: black;
