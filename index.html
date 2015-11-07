@@ -7,7 +7,7 @@
     <link href="css/style.css" media="screen" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div class="container">
+<div class="container" style="width:747px">
   <!--<div class="row">-->
     <!--<h1 style="margin-left:20px;">Targeted States-->
       <!--<small>2016</small>-->
@@ -27,7 +27,7 @@
 
 
 <script id="template-infobox" type="text/x-handlebars-template">
-    <div class="infobox" id="infobox" style="padding-top:12px;">
+    <div class="infobox" id="infobox" style="padding-top:10px;">
         <div class="body">
           <div class="row">
             <div class="col-md-4">
@@ -143,7 +143,7 @@
                 })
                 .on('mouseover', function(d) {
                         var dd = d.properties;
-                        infobar.attr("class", "infobox col-md-3");
+                        infobar.attr("class", "infobox");
                         var html = app.infoboxTemplate(dd);
                         $("#infobar").append(html);
                 })
