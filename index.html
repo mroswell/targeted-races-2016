@@ -67,7 +67,6 @@
         app.infoboxTemplate = Handlebars.compile(sourcebox);
         $.each( tabletop.sheets("statecategories").all(), function(i, race) {
             Districts[race.state] = race;
-          console.log(Districts);
         });
         loadGeo();
     }
@@ -88,8 +87,6 @@
     var colorScale = d3.scale.ordinal()
             .domain(["Republican", "Likely Republican", "Leans Republican", "Toss-up", "Leans Democratic","Democratic", "Not a Targeted Race"])
             .range(d3.range(7).map(function(d) {
-                // console.log("q", d);
-          console.log(d.state, "q"+ d + "-7");
                 return "q" + d + "-7";
             }));
 
