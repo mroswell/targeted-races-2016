@@ -124,7 +124,8 @@
                 .enter()
 
             .append("a")
-            .attr("xlink:href", function(d) {return "http://movement2016.org/#" + d.properties.statelink + " target='_parent'"})
+            .attr("xlink:href", function(d) {return "http://movement2016.org/#" + d.properties.statelink})
+            .attr("target", " _parent")
             .append("path")
             .attr("d", path)
             .attr("stroke", "white")
